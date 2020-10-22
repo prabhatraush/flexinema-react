@@ -1,0 +1,25 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+@import "./scss/Header.scss";
+@import "./scss//SearchBox.scss";
+@import "./scss/Banner.scss";
+@import "./scss/MovieCard.scss";
+@import "./scss/MoviesList.scss";
+
+
+$backColor: linear-gradient(to bottom, #141b29, #0c111b 300px);
+
+*{
+  margin:0;
+  box-sizing: border-box;
+}
+
+.App{
+  background-image: $backColor;
+
+  .loader{
+    max-width:400px;
+    margin:20px auto;
+  }
+}

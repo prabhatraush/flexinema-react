@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Banner from './Component/Banner';
+import Footer from './Component/Footer';
 import Header from './Component/Header';
 import MoviesList from './Component/MoviesList';
 import  Urls from './Urls';
@@ -21,6 +22,7 @@ function App() {
       <MoviesList categories="Horror Movies" url={Urls.fetchHorrorMovies} />
       <MoviesList categories="Romance Movies" url={Urls.fetchRomanceMovies} />
       <MoviesList categories="Comedy Movies" url={Urls.fetchComedyMovies} />
+      <Footer />
 
     </div>
   );

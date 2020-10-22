@@ -22,4 +22,22 @@ $backColor: linear-gradient(to bottom, #141b29, #0c111b 300px);
     max-width:400px;
     margin:20px auto;
   }
+
+  .app_footer{
+    background: #376070;
+    color: #ffffff;
+    font-size:0.8rem;
+    font-weight:400;
+    margin:10px 0px;
+    height:80px;
+    display: flex;
+    align-items: center;
+
+    .footer_container{
+      max-width: 400px;
+      margin:10px auto;
+      text-align: center;
+      padding:10px 20px;
+    }
+  }
 }

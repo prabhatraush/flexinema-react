@@ -76,7 +76,7 @@ function MoviesList(props) {
     const handlePlay = (movie) =>{
         setLoading(true);
         setTrailerURL('');
-        MovieTailer(movie?.title+"trailer")
+        MovieTailer(movie?.title)
         .then((res)=>{
             console.log(movie);
             const url = new URL(res);

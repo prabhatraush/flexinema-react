@@ -1,6 +1,6 @@
 
 const api_key = process.env.REACT_APP_TMDB_API;
-console.log(api_key);
+//console.log(api_key);
 
 const Urls = {
     fetchLatest:`/movie/upcoming?api_key=${api_key}&language=Hi&page=1`,

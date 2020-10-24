@@ -17,7 +17,7 @@ function Banner() {
 
         axios.get(api_url+''+Urls.fetchOriginals)
             .then(res=>{
-                console.log(res.data.results[Math.floor(Math.random()*res.data.results.length)]);
+             //   console.log(res.data.results[Math.floor(Math.random()*res.data.results.length)]);
                 setMovie(res.data.results[Math.floor(Math.random()*res.data.results.length)])
                 console.log("res");
             }).catch(err=>{
@@ -48,9 +48,9 @@ function Banner() {
         })
     }
 
-    console.log(movie);
+    //console.log(movie);
     return (
-            <div class="app_banner"
+            <div className="app_banner"
                 style={{
                     backgroundSize:"cover",
                     backgroundImage:`url("${img_url+movie?.poster_path}")`,
@@ -69,8 +69,8 @@ function Banner() {
                         movie &&
                         <div className="banner_container">
                             <h1 className="movie_title">{movie?.title}</h1>
-                            <div class="banner_btn">
-                                <button onClick={()=>handlePlay(movie)}> <i class="far fa-play-circle"></i> Play</button>
+                            <div className="banner_btn">
+                                <button onClick={()=>handlePlay(movie)}> <i className="far fa-play-circle"></i> Play</button>
                             </div>
                             <h1 className="moive_description">{movie?.overview.substring(0,349)} . . . </h1>
                         </div>

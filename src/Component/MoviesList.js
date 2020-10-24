@@ -23,12 +23,12 @@ function MoviesList(props) {
         {
             axios.get(api_url+''+url)
             .then(res=>{
-                console.log(res);
-                setMovies(res.data.results.filter(movie=> { return movie.poster_path!=null}))
-                console.log("res");
+               // console.log(res);
+                setMovies(res.data.results.filter(movie=> { return (movie.poster_path!==null && movie.title!=="" && movie.overview!=="")}))
+               // console.log("res");
             }).catch(err=>{
                 console.log(err);
-                console.log("err");
+               // console.log("err");
             })
         }
 
@@ -91,15 +91,15 @@ function MoviesList(props) {
     }
 
     return (
-        <div class="movies-collection">
+        <div className="movies-collection">
             <div className="collection-name">
                 {categories}
             </div>
             <div className="movies-list">
                 <Slider {...settings}>
                     { movies && 
-                        movies.map(movie=>{
-                            return <MovieCard movie={movie} onplay={handlePlay}/>
+                        movies.map((movie,i)=>{
+                            return <MovieCard key={i} movie={movie} onplay={handlePlay}/>
                         })
                     }
                 </Slider>

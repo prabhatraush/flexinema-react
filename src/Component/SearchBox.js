@@ -17,7 +17,7 @@ function SearchBox() {
                 <input type="text" placeholder="Search movies" onChange={(e)=>setQuery(e.target.value)}/>
             </div>
             <div className="search-btn">
-                <span onClick={()=>handleSearch()}><i class="fas fa-search"></i></span>
+                <span onClick={()=>handleSearch()}><i className="fas fa-search"></i></span>
             </div>
             
         </div>

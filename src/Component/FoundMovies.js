@@ -49,13 +49,13 @@ function FoundMovies( props) {
     useEffect(() => {
         axios.get(api_url+Urls.searchMovies+query)
         .then(res=>{
-            setMovies(res.data.results.filter(movie=> { return movie.poster_path!=null}));
+            setMovies(res.data.results.filter(movie=> { return (movie.poster_path!==null && movie.title!=="" && movie.overview!=="")}));
             
         }).catch(err=>{  
 
         })
     }, [query])
-
+    console.log(movies);
     return (
         <div className="found_movies">
             <div className="found_head">
@@ -73,8 +73,8 @@ function FoundMovies( props) {
             <div className="found_list">
                 {
                     movies &&
-                    movies.map(movie=>{
-                        return <MovieCard movie={movie} onplay={handlePlay}/>
+                    movies.map((movie,i)=>{
+                        return <MovieCard key={i} movie={movie} onplay={handlePlay}/>
                     })
                 }
             </div>

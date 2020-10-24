@@ -12,7 +12,7 @@ function MovieCard(props) {
             </div>
             <div className="movie-info">
                 <div className="play_btn">
-                    <i class="far fa-play-circle"></i>
+                    <i className="far fa-play-circle"></i>
                 </div>
                 <div className="movie-title">
                      <span>{movie.title}</span>

@@ -33,7 +33,7 @@ function MoviesList(props) {
         }
 
         fetchMovie()
-    }, [])
+    }, [url])
 
     const settings = {
         infinite: true,

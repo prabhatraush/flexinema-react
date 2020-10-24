@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
+import {Link} from "react-router-dom";
 import SearchBox from './SearchBox'
 
-function Header() {
+function Header(props) {
     const [show, changeHeader] = useState(false);
 
     useEffect(()=>{
@@ -20,7 +21,7 @@ function Header() {
         <div className={`app_header ${show && "header_back"}`}>
             <div className="header_container">
                 <div className="logo">
-                    Flexinema
+                    <Link to="/">Flexinema</Link>
                 </div>
                 <div className="nav_menu">
                     <SearchBox />

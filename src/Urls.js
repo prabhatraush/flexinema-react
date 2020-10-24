@@ -7,11 +7,11 @@ const Urls = {
     fetchTrending:`/trending/all/week?api_key=${api_key}&language=en-US`,
     fetchTopRated:`/movie/top_rated?api_key=${api_key}&language=en-US`,
     fetchActionMovies:`/discover/movie?api_key=${api_key}&with_genres=28`,
-    fetchActionMovies:`/discover/movie?api_key=${api_key}&with_genres=28`,
     fetchHorrorMovies:`/discover/movie?api_key=${api_key}&with_genres=27`,
     fetchComedyMovies:`/discover/movie?api_key=${api_key}&with_genres=35`,
     fetchRomanceMovies: `/discover/movie?api_key=${api_key}&with_genres=10749`,
-    fetchOriginals:`/discover/movie?api_key=${api_key}&with_networks=213`
+    fetchOriginals:`/discover/movie?api_key=${api_key}&with_networks=213`,
+    searchMovies:`/search/movie?api_key=${api_key}&query=`
 }
 
 export default Urls

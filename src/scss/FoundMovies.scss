@@ -1,0 +1,17 @@
+.found_movies{
+    padding:120px 50px 40px 50px;
+
+    .found_head{
+        font-size: 40px;
+        color:#ffffff;
+        font-weight: 600;
+        border-bottom: 1px solid #c2c2c2;
+        padding:10px 20px; 
+    }
+
+    .found_list{
+        padding-top:30px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

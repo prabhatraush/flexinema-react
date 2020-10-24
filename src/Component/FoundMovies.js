@@ -49,7 +49,7 @@ function FoundMovies( props) {
     useEffect(() => {
         axios.get(api_url+Urls.searchMovies+query)
         .then(res=>{
-            setMovies(res.data.results);
+            setMovies(res.data.results.filter(movie=> { return movie.poster_path!=null}));
             
         }).catch(err=>{  
 

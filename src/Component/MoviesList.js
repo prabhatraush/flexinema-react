@@ -24,7 +24,7 @@ function MoviesList(props) {
             axios.get(api_url+''+url)
             .then(res=>{
                 console.log(res);
-                setMovies(res.data.results)
+                setMovies(res.data.results.filter(movie=> { return movie.poster_path!=null}))
                 console.log("res");
             }).catch(err=>{
                 console.log(err);

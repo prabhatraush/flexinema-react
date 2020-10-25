@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 
-import Youtube from 'react-youtube'
+import PlayerModal from '../Component/PlayerModal'
 import MovieTailer from 'movie-trailer'
 
 import Urls from '../Urls';
@@ -45,6 +45,7 @@ function Banner() {
         })
         .catch(error=>{
             console.log(error);
+            setBannerTrailerURL("error");
         })
     }
 
@@ -58,14 +59,7 @@ function Banner() {
                 }}
                 >
                 {
-                    bannerTrailerURL ?
-                    <div className="banner_youtube">
-                        <Youtube videoId={bannerTrailerURL} opts={opts} /> 
-                    </div>
-                    
-                    :
                 
-                    (
                         movie &&
                         <div className="banner_container">
                             <h1 className="movie_title">{movie?.title}</h1>
@@ -74,8 +68,13 @@ function Banner() {
                             </div>
                             <h1 className="moive_description">{movie?.overview.substring(0,349)} . . . </h1>
                         </div>
-                    )
                 
+                }
+
+                {
+                    bannerTrailerURL &&
+                    <PlayerModal trailerUrl={bannerTrailerURL} setTrailerURL={setBannerTrailerURL}/>
+            
                 }
             </div>
     )

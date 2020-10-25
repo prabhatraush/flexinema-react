@@ -8,6 +8,7 @@ import Footer from './Component/Footer';
 import Header from './Component/Header';
 import MoviesList from './Component/MoviesList';
 import  Urls from './Urls';
+import PlayerModal from './Component/PlayerModal';
 
 
 function App() {

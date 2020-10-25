@@ -1,0 +1,28 @@
+.player_modal{
+    position: fixed;
+    top:0;
+    bottom: 0;
+    right:0;
+    bottom: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.9); 
+    z-index: 999;
+    cursor: pointer;
+
+    .close_btn{
+        span{
+            position: absolute;
+            right:0;
+            color:#ffffff;
+            margin:50px;
+            font-size: 60px;
+        }
+    }
+
+    .player_container{
+        max-width: 900px;
+        height:auto;
+        margin:100px auto;
+    }
+}

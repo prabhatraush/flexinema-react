@@ -1,14 +1,10 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios';
 
-
-import MovieCard from './MovieCard';
-
-import {PropagateLoader} from 'react-spinners';
-import Youtube from 'react-youtube'
+import PlayerModal from './PlayerModal'
+import MovieCard from './MovieCard'
 import MovieTailer from 'movie-trailer'
-
-import Urls from '../Urls';
+import Urls from '../Urls'
 
 const api_url = "https://api.themoviedb.org/3";
 
@@ -16,7 +12,6 @@ function FoundMovies( props) {
 
     const [movies,setMovies] = useState('');
     const [trailerUrl, setTrailerURL] = useState('');
-    const [loading, setLoading] = useState(false);
 
     const query = props.match.params.qid;
     console.log(props);
@@ -30,7 +25,6 @@ function FoundMovies( props) {
     }
 
     const handlePlay = (movie) =>{
-        setLoading(true);
         setTrailerURL('');
         MovieTailer(movie?.title)
         .then((res)=>{
@@ -38,11 +32,10 @@ function FoundMovies( props) {
             const url = new URL(res);
             const vid = url.searchParams.get("v");
             setTrailerURL(vid);
-            setLoading(false);
         })
         .catch(error=>{
             console.log(error);
-            setLoading(false);
+            setTrailerURL("error");
         })
     }
 
@@ -62,13 +55,8 @@ function FoundMovies( props) {
             {movies.length>0 ? "Total "+movies.length : "Sorry, no" } movies found !! 
             </div>
             {
-                trailerUrl ?
-                <Youtube videoId={trailerUrl} opts={opts}/>:
-                (   loading && 
-                    <div className="loader">
-                        <PropagateLoader size={20} color={"#ffffff"}/>
-                    </div>
-                )
+                trailerUrl &&
+                <PlayerModal trailerUrl={trailerUrl} setTrailerURL={setTrailerURL}/>
             }
             <div className="found_list">
                 {

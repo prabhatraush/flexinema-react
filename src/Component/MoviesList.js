@@ -7,13 +7,13 @@ import Youtube from 'react-youtube'
 import MovieTailer from 'movie-trailer'
 
 import MovieCard from './MovieCard';
+import PlayerModal from './PlayerModal';
 
 const api_url = "https://api.themoviedb.org/3";
 
 function MoviesList(props) {
     const [movies, setMovies] = useState([]);
     const [trailerUrl, setTrailerURL] = useState('');
-    const [loading, setLoading] = useState(false);
 
     const {categories, url} = props;
 
@@ -74,7 +74,6 @@ function MoviesList(props) {
     }
 
     const handlePlay = (movie) =>{
-        setLoading(true);
         setTrailerURL('');
         MovieTailer(movie?.title)
         .then((res)=>{
@@ -82,11 +81,10 @@ function MoviesList(props) {
             const url = new URL(res);
             const vid = url.searchParams.get("v");
             setTrailerURL(vid);
-            setLoading(false);
         })
         .catch(error=>{
             console.log(error);
-            setLoading(false);
+            setTrailerURL("error");
         })
     }
 
@@ -105,14 +103,10 @@ function MoviesList(props) {
                 </Slider>
             </div>
             {
-                trailerUrl ?
-                <Youtube videoId={trailerUrl} opts={opts}/>:
-                (   loading && 
-                    <div className="loader">
-                        <PropagateLoader size={20} color={"#ffffff"}/>
-                    </div>
-                )
+                trailerUrl &&
+                <PlayerModal trailerUrl={trailerUrl} setTrailerURL={setTrailerURL}/>
             }
+            
         </div>
     )
 }

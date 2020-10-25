@@ -8,6 +8,7 @@ function SearchBox() {
     const handleSearch = () =>{
         history.push("/search-result/"+query);
         console.log(query);
+        setQuery('');
         
     }
 

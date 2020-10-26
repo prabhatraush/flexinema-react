@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import PlayerModal from './PlayerModal'
 import MovieCard from './MovieCard'
-import MovieTailer from 'movie-trailer'
 import Urls from '../Urls'
 
 const api_url = "https://api.themoviedb.org/3";
@@ -25,18 +24,18 @@ function FoundMovies( props) {
     }
 
     const handlePlay = (movie) =>{
+
         setTrailerURL('');
-        MovieTailer(movie?.title)
-        .then((res)=>{
-            console.log(movie);
-            const url = new URL(res);
-            const vid = url.searchParams.get("v");
-            setTrailerURL(vid);
+
+        axios.get(api_url+Urls.fetchMovieVideo(movie?.id))
+        .then(res=>{
+            console.log();
+            setTrailerURL(res.data.results[0].key);
+        }).catch(err=>{
+            console.log(err);
+            setTrailerURL("onb-0y5IR1U");
         })
-        .catch(error=>{
-            console.log(error);
-            setTrailerURL("error");
-        })
+
     }
 
     useEffect(() => {

@@ -3,6 +3,7 @@ const api_key = process.env.REACT_APP_TMDB_API;
 //console.log(api_key);
 
 const Urls = {
+    fetchMovieVideo: function(movieId){ return `/movie/${movieId}/videos?api_key=${api_key}&language=en-US`},
     fetchLatest:`/movie/upcoming?api_key=${api_key}&language=Hi&page=1`,
     fetchTrending:`/trending/all/week?api_key=${api_key}&language=en-US`,
     fetchTopRated:`/movie/top_rated?api_key=${api_key}&language=en-US`,

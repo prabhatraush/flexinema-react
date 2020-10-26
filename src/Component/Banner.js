@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 
 import PlayerModal from '../Component/PlayerModal'
-import MovieTailer from 'movie-trailer'
 
 import Urls from '../Urls';
 
@@ -37,15 +36,13 @@ function Banner() {
 
     const handlePlay = (movie) =>{
 
-        MovieTailer(movie.title)
-        .then((res)=>{
-            const url = new URL(res);
-            const vid = url.searchParams.get("v");
-            setBannerTrailerURL(vid);
-        })
-        .catch(error=>{
-            console.log(error);
-            setBannerTrailerURL("error");
+        axios.get(api_url+Urls.fetchMovieVideo(movie?.id))
+        .then(res=>{
+            console.log();
+            setBannerTrailerURL(res.data.results[0].key);
+        }).catch(err=>{
+            console.log(err);
+            setBannerTrailerURL("onb-0y5IR1U");
         })
     }
 

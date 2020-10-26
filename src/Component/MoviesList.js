@@ -1,13 +1,10 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react'
 import Slider from "react-slick";
-import {PropagateLoader} from 'react-spinners';
 
-import Youtube from 'react-youtube'
-import MovieTailer from 'movie-trailer'
-
-import MovieCard from './MovieCard';
-import PlayerModal from './PlayerModal';
+import MovieCard from './MovieCard'
+import PlayerModal from './PlayerModal'
+import Urls from '../Urls'
 
 const api_url = "https://api.themoviedb.org/3";
 
@@ -19,20 +16,18 @@ function MoviesList(props) {
 
     useEffect( () => {
 
-        function fetchMovie()
+        function fetchMovies()
         {
             axios.get(api_url+''+url)
             .then(res=>{
                // console.log(res);
                 setMovies(res.data.results.filter(movie=> { return (movie.poster_path!==null && movie.title!=="" && movie.overview!=="")}))
-               // console.log("res");
             }).catch(err=>{
                 console.log(err);
-               // console.log("err");
             })
         }
 
-        fetchMovie()
+        fetchMovies()
     }, [url])
 
     const settings = {
@@ -50,15 +45,15 @@ function MoviesList(props) {
                 }
             },
             {
-                breakpoint: 610,
+                breakpoint: 710,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                 }
             },
             {
-                breakpoint: 400,
+                breakpoint: 500,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                 }
             }
         ]
@@ -75,16 +70,14 @@ function MoviesList(props) {
 
     const handlePlay = (movie) =>{
         setTrailerURL('');
-        MovieTailer(movie?.title)
-        .then((res)=>{
-            console.log(movie);
-            const url = new URL(res);
-            const vid = url.searchParams.get("v");
-            setTrailerURL(vid);
-        })
-        .catch(error=>{
-            console.log(error);
-            setTrailerURL("error");
+
+        axios.get(api_url+Urls.fetchMovieVideo(movie?.id))
+        .then(res=>{
+            console.log();
+            setTrailerURL(res.data.results[0].key);
+        }).catch(err=>{
+            console.log(err);
+            setTrailerURL("onb-0y5IR1U");
         })
     }
 

@@ -21,7 +21,7 @@ function Header(props) {
         <div className={`app_header ${show && "header_back"}`}>
             <div className="header_container">
                 <div className="logo">
-                    <Link to="/">Flexinema</Link>
+                    <Link to="/"><img src="logo-flexinema.png"/></Link>
                 </div>
                 <div className="nav_menu">
                     <SearchBox />

@@ -1,0 +1,60 @@
+.app_footer{
+    background: #062149;
+    color: #ffffff;
+    font-weight:400;
+
+    .footer_container{
+      display: flex;
+      max-width: 1100px;
+      margin:5px auto;
+      justify-content: space-between;
+      align-items: center;
+
+      .footer_left{
+          flex:1;
+
+          .logo{
+               img{
+                margin:10px 0;
+                height:90px;
+                width: 110px;
+               }
+          }
+      }
+
+      .footer_right{
+          flex: 0;
+          margin:0px 20px;
+
+          h2{
+              font-size: 14px;
+          }
+
+          .social_touch{
+              display: flex;
+            span{
+                margin:10px 5px;
+  
+                i{
+                    font-size: 25px;
+                }
+                
+                &:hover{
+                    cursor: pointer;
+                    transform: scale(1.09);;
+                }
+            }
+          }
+          
+        
+      }
+    }
+
+    .copyright{
+        border-top: 1px solid #f2f2f2;
+        padding:10px 0px;
+        text-align: center;
+        font-size: 0.8rem;
+
+    }
+  }
